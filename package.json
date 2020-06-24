@@ -1,0 +1,32 @@
+{
+    "name": "hamro-baglung-server",
+    "version": "1.0.0",
+    "description": "hamro-baglung-server application with react, express, api  with mysql",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "nodejs",
+        "express",
+        "mysql",
+        "restapi"
+    ],
+    "author": "jyotiadhikari",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "compression": "^1.7.4",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^3.23.1",
+        "joi": "^14.3.1",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.1.0",
+        "nodemon": "^2.0.4",
+        "sequelize": "^5.21.13"
+    }
+}
