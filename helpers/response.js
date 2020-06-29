@@ -14,7 +14,7 @@ module.exports = {
     this.type = "error";
     this.message = message;
   },
-  send: function (res) {
+  send: function (res) {     
     const result = {
       status: this.type,
       message: this.message,

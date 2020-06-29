@@ -4,14 +4,15 @@
     "description": "hamro-baglung-server application with react, express, api  with mysql",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js",
+        "start": "nodemon ./bin/www",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
         "nodejs",
         "express",
         "mysql",
-        "restapi"
+        "restapi",
+        "sequalize"
     ],
     "author": "jyotiadhikari",
     "license": "ISC",
@@ -27,6 +28,7 @@
         "mysql": "^2.18.1",
         "mysql2": "^2.1.0",
         "nodemon": "^2.0.4",
-        "sequelize": "^5.21.13"
+        "sequelize": "^5.22.2",
+        "sequelize-cli": "^6.1.0"
     }
 }

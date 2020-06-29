@@ -1,30 +1,23 @@
-const Sequelize = require("Sequelize");
-const sequelize = require("../db/squalizeconfig.js");
-const User = require('./users.js');
-const Category = sequelize.define("category", {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true,
-  },
-  type: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  description: {
-    type: Sequelize.STRING,
-    allowNull: true,
-  },
-  userId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,  
-    references: {
-      model: User, // Can be both a string representing the table name or a Sequelize model
-      key: "id",
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Category = sequelize.define('Category', {    
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
-  },
-});
-User.hasMany(Category); // Will add userId to Task model
-Category.belongsTo(User); // Will also add userId to Task model
-module.exports = Category;
+    description: DataTypes.STRING
+  }, {});
+  Category.associate = function (models) {
+    models.Category.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    models.Category.hasMany(models.Post);
+  };    
+  return Category;
+};

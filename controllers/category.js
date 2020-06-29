@@ -1,6 +1,5 @@
-const Categorys = require("../models/category.js");
+const Category = require('../models').Category;
 const response = require("../helpers/response.js");
-const Category = require("../models/category.js");
 
 exports.create = async (req, res, next) => {
   if (!req.body) {
@@ -8,17 +7,16 @@ exports.create = async (req, res, next) => {
     response.send(res);
   }
   const category = {
-    userId: req.body.userId,
+    UserId: req.body.userid,
     type: req.body.type,
     description: req.body.description
-  };
-
-  await Categorys.findOne({
+  };        
+  await Category.findOne({
     where: { type: req.body.type },
   })
     .then((resp) => {
       if (resp == null) {
-        return Categorys.create(category);
+        return Category.create(category);
       } else {
         response.setError(401, "type already exist.");
         response.send(res);
@@ -30,14 +28,14 @@ exports.create = async (req, res, next) => {
     .catch((err) => {
       response.setError(
         400,
-        err.message || "Some error occurred while creating the category."
+        err.message 
       );
-    });
+    });    
   response.send(res);
 };
 
 exports.findAll = async (req, res) => {
-   await Categorys.findAll()
+   await Category.findAll()
      .then((resp) => {
        response.setSuccess(200, resp);
      })
@@ -70,7 +68,7 @@ exports.findByUser = async (req, res) => {
 
 exports.findOne = async (req, res) => {
     const category_id = req.params.category_id;
-   await Categorys.findOne({
+   await Category.findOne({
      where: {
        id: category_id,
      },
@@ -98,7 +96,7 @@ exports.update = async (req, res) => {
     type: req.body.type,
     description: req.body.description,
     };
- await Categorys.update(category, {
+ await Category.update(category, {
    where: {
      id: category_id,
    },
@@ -117,8 +115,7 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
   const category_id = req.params.category_id;
-  await Categorys
-    .findByPk(category_id)
+  await Category.findByPk(category_id)
     .then((resp) => {
       return resp.destroy();
     })
