@@ -6,6 +6,7 @@ const postdetail = require('./postdetail');
 const like = require('./like');
 const view = require('./view');
 const comment = require('./comment');
+const login = require("./login");
 
 module.exports = {
   category,
@@ -15,5 +16,6 @@ module.exports = {
   postdetail,
   like,
   view,
-  comment
+  comment,
+  login
 };

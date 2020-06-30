@@ -2,10 +2,16 @@
     "name": "hamro-baglung-server",
     "version": "1.0.0",
     "description": "hamro-baglung-server application with react, express, api  with mysql",
-    "main": "server.js",
     "scripts": {
-        "start": "nodemon ./bin/www",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "npm-run-all --parallel watch:server start:web",
+        "start:server": "node ./bin/www",
+        "start:web": "react-scripts start",
+        "watch:server": "nodemon --watch ./bin/www",
+        "build": "react-scripts build",
+        "test": "react-script test --env=jsdom",
+        "eject": "react-script eject",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix --ext .js, ."
     },
     "keywords": [
         "nodejs",
@@ -25,10 +31,31 @@
         "express": "^4.17.1",
         "helmet": "^3.23.1",
         "joi": "^14.3.1",
+        "jsonwebtoken": "^8.5.1",
         "mysql": "^2.18.1",
         "mysql2": "^2.1.0",
-        "nodemon": "^2.0.4",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "^3.4.1",
         "sequelize": "^5.22.2",
         "sequelize-cli": "^6.1.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.3.1",
+        "nodemon": "^2.0.4",
+        "npm-run-all": "^4.1.5"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
 }

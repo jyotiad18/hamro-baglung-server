@@ -9,6 +9,7 @@ const postdetailController = require('../controllers').postdetail;
 const likeController = require('../controllers').like;
 const viewController = require('../controllers').view;
 const commentController = require('../controllers').comment;
+const loginController = require("../controllers").login;
 
 /* UserType Router */
 router.get('/usertypes', usertypeController.findAll);
@@ -58,5 +59,8 @@ router.post("/views/", viewController.create);
 /* Comment Router */
 router.get("/comments/", commentController.findAll);
 router.post("/comments/", commentController.create);
+
+/* Login Router */
+router.post('/logins', loginController.login);
 
 module.exports = router;

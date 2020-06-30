@@ -9,5 +9,15 @@ module.exports = {
             const hashPassword = bcrypt.hashSync(password, SALT_ROUND);
             return hashPassword;
         }
+    },
+    compareHash: function (password, hashPassword)
+    {
+        bcrypt.compareSync(password, hashPassword)
+            .then(resp => {                
+                return true;
+            })
+            .catch(err => {
+                throw err;
+            });
     }
 };

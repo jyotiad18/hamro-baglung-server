@@ -19,21 +19,7 @@ app.use(cors());
 app.use(compression());
 app.use(helmet()); // for http.header
 
-
 //route
 app.use("/api/", indexRoute);
-
-/*const port = process.env.Port || 4000;
-
-
-sequelize
-  .sync({ force: false })
-  .then((res) => {  
-    app.listen(port);
-  })
-  .catch((err) => {
-    console.log(`error: ${err}`);
-  });
-*/
 
 module.exports = app;
